@@ -1,10 +1,14 @@
 import asyncio
 import discord
 from discord.ext import tasks, commands
+import os
+from dotenv import load_dotenv
 
-TOKEN = "[.env файл с токеном бота]"
-CHANNEL_ID = "[.env файл с ID канала]"
-INTERVAL = 10
+load_dotenv()
+
+TOKEN = os.getenv("TOKEN")                                                       # Получаем токен бота из переменных окружения
+CHANNEL_ID = int(os.getenv("CHANNEL_ID"))                                        # Получаем ID канала из переменных окружения и преобразуем его в целое число
+INTERVAL = 10                                                                    # Интервал в секундах между отправкой сообщений (можно изменить по вашему усмотрению)
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -25,7 +29,7 @@ async def bump_channel():
 
     while not bot.is_closed():
         try:
-            msg = await channel.send("‌Опа, уведомление! :)")
+            msg = await channel.send("‌Опа, уведомление! :)")                     # Отправляем сообщение в канал (настройка под ваше усмотрение)
             print(f"Сообщение отправлено в канал {channel.name}")
             
             await asyncio.sleep(1)
