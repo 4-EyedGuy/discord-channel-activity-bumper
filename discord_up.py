@@ -8,7 +8,7 @@ load_dotenv()
 
 TOKEN = os.getenv("TOKEN")                                                       # Получаем токен бота из переменных окружения
 CHANNEL_ID = int(os.getenv("CHANNEL_ID"))                                        # Получаем ID канала из переменных окружения и преобразуем его в целое число
-INTERVAL = int(os.getenv("INTERVAL"))                                            # Интервал в секундах между отправкой сообщений (можно изменить по вашему усмотрению)
+INTERVAL = int(os.getenv("INTERVAL", 15))                                        # Интервал в секундах между отправкой сообщений (можно изменить по вашему усмотрению)
 
 intents = discord.Intents.default()
 intents.message_content = True
